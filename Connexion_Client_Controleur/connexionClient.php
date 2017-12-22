@@ -1,5 +1,6 @@
 <?php
 
+
 class ConnexionClient extends CI_Controller
 {
     public function __construct()
@@ -57,19 +58,21 @@ class ConnexionClient extends CI_Controller
 
 				//	Le formulaire est valide, mais informations incorrectes
 				$this->load->view('Base_HTML/Header');
-           		$this->load->view('Connexion_Client/formulaireErreur');
-           		$this->load->view('Base_HTML/Footer');
+           			$this->load->view('Connexion_Client/formulaireErreur');
+           			$this->load->view('Base_HTML/Footer');
 
-           		$this->session->set_flashdata('noconnect', 'Aucun compte ne correspond à vos identifiants ');
+           			$this->session->set_flashdata('noconnect', 'Aucun compte ne correspond à vos identifiants ');
 
 			}
 			else{
 
-				//Le formulaire est correct ainsi que l'identifiant/mdp
+				//Le formulaire est correct ainsi que l'identifiant/mdp, on va donc à la page suivante
+				$this->load->view('Base_HTML/Header');
+				$this->load->view('/Avancement_Client/Formulaire_Commande');
 				$this->load->view('Base_HTML/Footer');
 				$this->session->set_userdata('NomClient', $result[0]->NomClient);
-
 			}
+
 		}
 
 
